@@ -1,0 +1,110 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"31 C:\Users\91984\MPLABXProjects\UART Communication\UART_Slave.X\UART_Slave.c
+[v _main main `(v  1 e 1 0 ]
+"66
+[v _displayUp displayUp `(v  1 e 1 0 ]
+"78
+[v _displayDown displayDown `(v  1 e 1 0 ]
+"91
+[v _init init `(v  1 e 1 0 ]
+"102
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"114
+[v _command command `(v  1 e 1 0 ]
+"123
+[v _data data `(v  1 e 1 0 ]
+"217 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"279
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"965
+[v _RCSTA RCSTA `VEuc  1 e 1 @24 ]
+"1060
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"1067
+[v _RCREG RCREG `VEuc  1 e 1 @26 ]
+"1376
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1438
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"2000
+[v _TXSTA TXSTA `VEuc  1 e 1 @152 ]
+"2081
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"31 C:\Users\91984\MPLABXProjects\UART Communication\UART_Slave.X\UART_Slave.c
+[v _main main `(v  1 e 1 0 ]
+{
+"38
+[v main@rxd rxd `ui  1 a 2 9 ]
+"64
+} 0
+"102
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"113
+} 0
+"91
+[v _init init `(v  1 e 1 0 ]
+{
+"101
+} 0
+"66
+[v _displayUp displayUp `(v  1 e 1 0 ]
+{
+[v displayUp@dat dat `uc  1 a 1 wreg ]
+"71
+[v displayUp@i i `i  1 a 2 13 ]
+"69
+[v displayUp@arr arr `[12]uc  1 a 12 0 ]
+"66
+[v displayUp@dat dat `uc  1 a 1 wreg ]
+"68
+[v displayUp@F893 F893 `[12]uc  1 s 12 F893 ]
+[v displayUp@dat dat `uc  1 a 1 12 ]
+"76
+} 0
+"78
+[v _displayDown displayDown `(v  1 e 1 0 ]
+{
+[v displayDown@dat dat `uc  1 a 1 wreg ]
+"83
+[v displayDown@i i `i  1 a 2 13 ]
+"81
+[v displayDown@arr arr `[12]uc  1 a 12 0 ]
+"78
+[v displayDown@dat dat `uc  1 a 1 wreg ]
+"80
+[v displayDown@F898 F898 `[12]uc  1 s 12 F898 ]
+[v displayDown@dat dat `uc  1 a 1 12 ]
+"88
+} 0
+"123
+[v _data data `(v  1 e 1 0 ]
+{
+[v data@a a `uc  1 a 1 wreg ]
+[v data@a a `uc  1 a 1 wreg ]
+"125
+[v data@a a `uc  1 a 1 2 ]
+"130
+} 0
+"114
+[v _command command `(v  1 e 1 0 ]
+{
+[v command@a a `uc  1 a 1 wreg ]
+[v command@a a `uc  1 a 1 wreg ]
+"116
+[v command@a a `uc  1 a 1 2 ]
+"121
+} 0
