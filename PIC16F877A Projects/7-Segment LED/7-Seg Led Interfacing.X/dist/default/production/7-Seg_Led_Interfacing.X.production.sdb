@@ -1,0 +1,118 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"30 C:\Users\91984\MPLABXProjects\7-Segment LED\7-Seg Led Interfacing.X\7-seg_Interfacing.c
+[v _main main `(v  1 e 1 0 ]
+"50
+[v _init init `(v  1 e 1 0 ]
+"61
+[v _calibrate calibrate `(uc  1 e 1 0 ]
+"79
+[v _left left `(v  1 e 1 0 ]
+"85
+[v _right right `(v  1 e 1 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"28 C:\Users\91984\MPLABXProjects\7-Segment LED\7-Seg Led Interfacing.X\7-seg_Interfacing.c
+[v _counter counter `uc  1 e 1 0 ]
+"217 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f877a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"279
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"341
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"1256
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
+"1376
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1438
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1500
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"30 C:\Users\91984\MPLABXProjects\7-Segment LED\7-Seg Led Interfacing.X\7-seg_Interfacing.c
+[v _main main `(v  1 e 1 0 ]
+{
+"36
+[v main@var var `uc  1 a 1 14 ]
+"48
+} 0
+"50
+[v _init init `(v  1 e 1 0 ]
+{
+"59
+} 0
+"61
+[v _calibrate calibrate `(uc  1 e 1 0 ]
+{
+[v calibrate@counter counter `uc  1 a 1 wreg ]
+"70
+[v calibrate@rdig rdig `uc  1 a 1 12 ]
+"71
+[v calibrate@ldig ldig `uc  1 a 1 11 ]
+"61
+[v calibrate@counter counter `uc  1 a 1 wreg ]
+[v calibrate@counter counter `uc  1 a 1 13 ]
+"77
+} 0
+"85
+[v _right right `(v  1 e 1 0 ]
+{
+[v right@r r `uc  1 a 1 wreg ]
+"87
+[v right@arr arr `[10]uc  1 a 10 0 ]
+"85
+[v right@r r `uc  1 a 1 wreg ]
+[v right@F899 F899 `[10]uc  1 s 10 F899 ]
+"87
+[v right@r r `uc  1 a 1 10 ]
+"89
+} 0
+"79
+[v _left left `(v  1 e 1 0 ]
+{
+[v left@l l `uc  1 a 1 wreg ]
+"81
+[v left@arr arr `[10]uc  1 a 10 0 ]
+"79
+[v left@l l `uc  1 a 1 wreg ]
+[v left@F895 F895 `[10]uc  1 s 10 F895 ]
+"81
+[v left@l l `uc  1 a 1 10 ]
+"83
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 6 ]
+[v ___awmod@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
