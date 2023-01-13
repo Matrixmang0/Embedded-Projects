@@ -1,0 +1,1643 @@
+
+
+Microchip MPLAB XC8 Assembler V2.36 build 20220127204148 
+                                                                                               Fri Jan 13 14:58:32 2023
+
+Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     7                           	psect	maintext,global,class=CODE,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	psect	text2,local,class=CODE,merge=1,delta=2
+    10                           	psect	text3,local,class=CODE,merge=1,delta=2
+    11                           	psect	text4,local,class=CODE,merge=1,delta=2
+    12                           	psect	text5,local,class=CODE,merge=1,delta=2
+    13                           	psect	text6,local,class=CODE,merge=1,delta=2
+    14                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=2,noexec
+    15                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    16                           	dabs	1,0x7E,2
+    17  0000                     
+    18                           ; Version 2.40
+    19                           ; Generated 17/11/2021 GMT
+    20                           ; 
+    21                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    22                           ; All rights reserved.
+    23                           ; 
+    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    25                           ; 
+    26                           ; Redistribution and use in source and binary forms, with or without modification, are
+    27                           ; permitted provided that the following conditions are met:
+    28                           ; 
+    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    30                           ;        conditions and the following disclaimer.
+    31                           ; 
+    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    33                           ;        of conditions and the following disclaimer in the documentation and/or other
+    34                           ;        materials provided with the distribution. Publication is not required when
+    35                           ;        this file is used in an embedded application.
+    36                           ; 
+    37                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    38                           ;        software without specific prior written permission.
+    39                           ; 
+    40                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    41                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    42                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    43                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    44                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    45                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    46                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    47                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    48                           ; 
+    49                           ; 
+    50                           ; Code-generator required, PIC16F877A Definitions
+    51                           ; 
+    52                           ; SFR Addresses
+    53  0000                     	;# 
+    54  0001                     	;# 
+    55  0002                     	;# 
+    56  0003                     	;# 
+    57  0004                     	;# 
+    58  0005                     	;# 
+    59  0006                     	;# 
+    60  0007                     	;# 
+    61  0008                     	;# 
+    62  0009                     	;# 
+    63  000A                     	;# 
+    64  000B                     	;# 
+    65  000C                     	;# 
+    66  000D                     	;# 
+    67  000E                     	;# 
+    68  000E                     	;# 
+    69  000F                     	;# 
+    70  0010                     	;# 
+    71  0011                     	;# 
+    72  0012                     	;# 
+    73  0013                     	;# 
+    74  0014                     	;# 
+    75  0015                     	;# 
+    76  0015                     	;# 
+    77  0016                     	;# 
+    78  0017                     	;# 
+    79  0018                     	;# 
+    80  0019                     	;# 
+    81  001A                     	;# 
+    82  001B                     	;# 
+    83  001B                     	;# 
+    84  001C                     	;# 
+    85  001D                     	;# 
+    86  001E                     	;# 
+    87  001F                     	;# 
+    88  0081                     	;# 
+    89  0085                     	;# 
+    90  0086                     	;# 
+    91  0087                     	;# 
+    92  0088                     	;# 
+    93  0089                     	;# 
+    94  008C                     	;# 
+    95  008D                     	;# 
+    96  008E                     	;# 
+    97  0091                     	;# 
+    98  0092                     	;# 
+    99  0093                     	;# 
+   100  0094                     	;# 
+   101  0098                     	;# 
+   102  0099                     	;# 
+   103  009C                     	;# 
+   104  009D                     	;# 
+   105  009E                     	;# 
+   106  009F                     	;# 
+   107  010C                     	;# 
+   108  010D                     	;# 
+   109  010E                     	;# 
+   110  010F                     	;# 
+   111  018C                     	;# 
+   112  018D                     	;# 
+   113  0000                     	;# 
+   114  0001                     	;# 
+   115  0002                     	;# 
+   116  0003                     	;# 
+   117  0004                     	;# 
+   118  0005                     	;# 
+   119  0006                     	;# 
+   120  0007                     	;# 
+   121  0008                     	;# 
+   122  0009                     	;# 
+   123  000A                     	;# 
+   124  000B                     	;# 
+   125  000C                     	;# 
+   126  000D                     	;# 
+   127  000E                     	;# 
+   128  000E                     	;# 
+   129  000F                     	;# 
+   130  0010                     	;# 
+   131  0011                     	;# 
+   132  0012                     	;# 
+   133  0013                     	;# 
+   134  0014                     	;# 
+   135  0015                     	;# 
+   136  0015                     	;# 
+   137  0016                     	;# 
+   138  0017                     	;# 
+   139  0018                     	;# 
+   140  0019                     	;# 
+   141  001A                     	;# 
+   142  001B                     	;# 
+   143  001B                     	;# 
+   144  001C                     	;# 
+   145  001D                     	;# 
+   146  001E                     	;# 
+   147  001F                     	;# 
+   148  0081                     	;# 
+   149  0085                     	;# 
+   150  0086                     	;# 
+   151  0087                     	;# 
+   152  0088                     	;# 
+   153  0089                     	;# 
+   154  008C                     	;# 
+   155  008D                     	;# 
+   156  008E                     	;# 
+   157  0091                     	;# 
+   158  0092                     	;# 
+   159  0093                     	;# 
+   160  0094                     	;# 
+   161  0098                     	;# 
+   162  0099                     	;# 
+   163  009C                     	;# 
+   164  009D                     	;# 
+   165  009E                     	;# 
+   166  009F                     	;# 
+   167  010C                     	;# 
+   168  010D                     	;# 
+   169  010E                     	;# 
+   170  010F                     	;# 
+   171  018C                     	;# 
+   172  018D                     	;# 
+   173  0008                     _PORTD	set	8
+   174  0007                     _PORTC	set	7
+   175  0006                     _PORTB	set	6
+   176  0087                     _TRISC	set	135
+   177  0088                     _TRISD	set	136
+   178  0081                     _OPTION_REG	set	129
+   179  0086                     _TRISB	set	134
+   180                           
+   181                           	psect	cinit
+   182  07FB                     start_initialization:	
+   183                           ; #config settings
+   184                           
+   185  07FB                     __initialization:
+   186                           
+   187                           ; Clear objects allocated to COMMON
+   188  07FB  01F7               	clrf	__pbssCOMMON& (0+127)
+   189  07FC                     end_of_initialization:	
+   190                           ;End of C runtime variable initialization code
+   191                           
+   192  07FC                     __end_of__initialization:
+   193  07FC  0183               	clrf	3
+   194  07FD  120A  118A  2E51   	ljmp	_main	;jump to C main() function
+   195                           
+   196                           	psect	bssCOMMON
+   197  0077                     __pbssCOMMON:
+   198  0077                     _cnt:
+   199  0077                     	ds	1
+   200                           
+   201                           	psect	cstackCOMMON
+   202  0070                     __pcstackCOMMON:
+   203  0070                     ?_keypad_init:
+   204  0070                     ??_keypad_init:	
+   205                           ; 1 bytes @ 0x0
+   206                           
+   207  0070                     ?_LCD_init:	
+   208                           ; 1 bytes @ 0x0
+   209                           
+   210  0070                     ?_keypad_scan:	
+   211                           ; 1 bytes @ 0x0
+   212                           
+   213  0070                     ??_keypad_scan:	
+   214                           ; 1 bytes @ 0x0
+   215                           
+   216  0070                     ?_check_LCD:	
+   217                           ; 1 bytes @ 0x0
+   218                           
+   219  0070                     ?_data:	
+   220                           ; 1 bytes @ 0x0
+   221                           
+   222  0070                     ??_data:	
+   223                           ; 1 bytes @ 0x0
+   224                           
+   225  0070                     ?_command:	
+   226                           ; 1 bytes @ 0x0
+   227                           
+   228  0070                     ??_command:	
+   229                           ; 1 bytes @ 0x0
+   230                           
+   231  0070                     ?_main:	
+   232                           ; 1 bytes @ 0x0
+   233                           
+   234                           
+   235                           ; 1 bytes @ 0x0
+   236  0070                     	ds	2
+   237  0072                     command@m:
+   238  0072                     data@n:	
+   239                           ; 1 bytes @ 0x2
+   240                           
+   241                           
+   242                           ; 1 bytes @ 0x2
+   243  0072                     	ds	1
+   244  0073                     ??_LCD_init:
+   245  0073                     ??_check_LCD:	
+   246                           ; 1 bytes @ 0x3
+   247                           
+   248                           
+   249                           ; 1 bytes @ 0x3
+   250  0073                     	ds	2
+   251  0075                     ??_main:
+   252                           
+   253                           ; 1 bytes @ 0x5
+   254  0075                     	ds	1
+   255  0076                     main@pressed:
+   256                           
+   257                           ; 1 bytes @ 0x6
+   258  0076                     	ds	1
+   259                           
+   260                           	psect	maintext
+   261  0651                     __pmaintext:	
+   262 ;;
+   263 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   264 ;;
+   265 ;; *************** function _main *****************
+   266 ;; Defined at:
+   267 ;;		line 35 in file "keypad_interfacing.c"
+   268 ;; Parameters:    Size  Location     Type
+   269 ;;		None
+   270 ;; Auto vars:     Size  Location     Type
+   271 ;;  pressed         1    6[COMMON] unsigned char 
+   272 ;; Return value:  Size  Location     Type
+   273 ;;                  1    wreg      void 
+   274 ;; Registers used:
+   275 ;;		wreg, status,2, status,0, pclath, cstack
+   276 ;; Tracked objects:
+   277 ;;		On entry : B00/0
+   278 ;;		On exit  : 0/0
+   279 ;;		Unchanged: 0/0
+   280 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   281 ;;      Params:         0       0       0       0       0
+   282 ;;      Locals:         1       0       0       0       0
+   283 ;;      Temps:          1       0       0       0       0
+   284 ;;      Totals:         2       0       0       0       0
+   285 ;;Total ram usage:        2 bytes
+   286 ;; Hardware stack levels required when called: 2
+   287 ;; This function calls:
+   288 ;;		_LCD_init
+   289 ;;		_check_LCD
+   290 ;;		_data
+   291 ;;		_keypad_init
+   292 ;;		_keypad_scan
+   293 ;; This function is called by:
+   294 ;;		Startup code after reset
+   295 ;; This function uses a non-reentrant model
+   296 ;;
+   297                           
+   298  0651                     _main:	
+   299                           ;psect for function _main
+   300                           
+   301  0651                     l864:	
+   302                           ;incstack = 0
+   303                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   304                           
+   305                           
+   306                           ;keypad_interfacing.c: 37:     keypad_init();
+   307  0651  120A  118A  25FA  120A  118A  	fcall	_keypad_init
+   308                           
+   309                           ;keypad_interfacing.c: 38:     LCD_init();
+   310  0656  120A  118A  2678  120A  118A  	fcall	_LCD_init
+   311  065B                     l866:
+   312  065B                     l868:
+   313                           
+   314                           ;keypad_interfacing.c: 41:         pressed = keypad_scan();
+   315  065B  120A  118A  26DB  120A  118A  	fcall	_keypad_scan
+   316  0660  00F5               	movwf	??_main
+   317  0661  0875               	movf	??_main,w
+   318  0662  00F6               	movwf	main@pressed
+   319  0663                     l870:
+   320                           
+   321                           ;keypad_interfacing.c: 42:         if (pressed != 'x') {
+   322  0663  3078               	movlw	120
+   323  0664  0676               	xorwf	main@pressed,w
+   324  0665  1903               	btfsc	3,2
+   325  0666  2E68               	goto	u271
+   326  0667  2E69               	goto	u270
+   327  0668                     u271:
+   328  0668  2E5B               	goto	l868
+   329  0669                     u270:
+   330  0669                     l872:
+   331                           
+   332                           ;keypad_interfacing.c: 43:             check_LCD();
+   333  0669  120A  118A  262C  120A  118A  	fcall	_check_LCD
+   334                           
+   335                           ;keypad_interfacing.c: 44:             data(pressed);
+   336  066E  0876               	movf	main@pressed,w
+   337  066F  120A  118A  2618  120A  118A  	fcall	_data
+   338  0674  2E5B               	goto	l868
+   339  0675  120A  118A  2800   	ljmp	start
+   340  0678                     __end_of_main:
+   341                           
+   342                           	psect	text1
+   343  06DB                     __ptext1:	
+   344 ;; *************** function _keypad_scan *****************
+   345 ;; Defined at:
+   346 ;;		line 94 in file "keypad_interfacing.c"
+   347 ;; Parameters:    Size  Location     Type
+   348 ;;		None
+   349 ;; Auto vars:     Size  Location     Type
+   350 ;;		None
+   351 ;; Return value:  Size  Location     Type
+   352 ;;                  1    wreg      unsigned char 
+   353 ;; Registers used:
+   354 ;;		wreg, status,2, status,0
+   355 ;; Tracked objects:
+   356 ;;		On entry : 0/0
+   357 ;;		On exit  : 0/0
+   358 ;;		Unchanged: 0/0
+   359 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   360 ;;      Params:         0       0       0       0       0
+   361 ;;      Locals:         0       0       0       0       0
+   362 ;;      Temps:          2       0       0       0       0
+   363 ;;      Totals:         2       0       0       0       0
+   364 ;;Total ram usage:        2 bytes
+   365 ;; Hardware stack levels used: 1
+   366 ;; This function calls:
+   367 ;;		Nothing
+   368 ;; This function is called by:
+   369 ;;		_main
+   370 ;; This function uses a non-reentrant model
+   371 ;;
+   372                           
+   373  06DB                     _keypad_scan:	
+   374                           ;psect for function _keypad_scan
+   375                           
+   376  06DB                     l760:	
+   377                           ;incstack = 0
+   378                           ; Regs used in _keypad_scan: [wreg+status,2+status,0]
+   379                           
+   380                           
+   381                           ;keypad_interfacing.c: 96:     PORTB |= 0x70;
+   382  06DB  3070               	movlw	112
+   383  06DC  00F0               	movwf	??_keypad_scan
+   384  06DD  0870               	movf	??_keypad_scan,w
+   385  06DE  1283               	bcf	3,5	;RP0=0, select bank0
+   386  06DF  1303               	bcf	3,6	;RP1=0, select bank0
+   387  06E0  0486               	iorwf	6,f	;volatile
+   388                           
+   389                           ;keypad_interfacing.c: 97:     PORTB &= ~0x08;
+   390  06E1  30F7               	movlw	247
+   391  06E2  00F0               	movwf	??_keypad_scan
+   392  06E3  0870               	movf	??_keypad_scan,w
+   393  06E4  0586               	andwf	6,f	;volatile
+   394  06E5                     l762:
+   395                           
+   396                           ;keypad_interfacing.c: 98:     if ((PORTB&0x04)==0x00){
+   397  06E5  1906               	btfsc	6,2	;volatile
+   398  06E6  2EE8               	goto	u11
+   399  06E7  2EE9               	goto	u10
+   400  06E8                     u11:
+   401  06E8  2EFA               	goto	l54
+   402  06E9                     u10:
+   403  06E9                     l764:
+   404                           
+   405                           ;keypad_interfacing.c: 99:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   406  06E9  30C3               	movlw	195
+   407  06EA  00F1               	movwf	??_keypad_scan+1
+   408  06EB  30CD               	movlw	205
+   409  06EC  00F0               	movwf	??_keypad_scan
+   410  06ED                     u287:
+   411  06ED  0BF0               	decfsz	??_keypad_scan,f
+   412  06EE  2EED               	goto	u287
+   413  06EF  0BF1               	decfsz	??_keypad_scan+1,f
+   414  06F0  2EED               	goto	u287
+   415                           
+   416                           ;keypad_interfacing.c: 100:         if (~(PORTB&0x04)){
+   417  06F1  1283               	bcf	3,5	;RP0=0, select bank0
+   418  06F2  1303               	bcf	3,6	;RP1=0, select bank0
+   419  06F3  0806               	movf	6,w	;volatile
+   420  06F4                     l56:	
+   421                           ;keypad_interfacing.c: 101:             while((PORTB&0x04)==0x00);
+   422                           
+   423  06F4  1D06               	btfss	6,2	;volatile
+   424  06F5  2EF7               	goto	u21
+   425  06F6  2EF8               	goto	u20
+   426  06F7                     u21:
+   427  06F7  2EF4               	goto	l56
+   428  06F8                     u20:
+   429  06F8                     l766:
+   430                           
+   431                           ;keypad_interfacing.c: 102:             return '1';
+   432  06F8  3031               	movlw	49
+   433  06F9  2FFA               	goto	l59
+   434  06FA                     l54:	
+   435                           ;keypad_interfacing.c: 105:     else if ((PORTB&0x02)==0x00){
+   436                           
+   437  06FA  1886               	btfsc	6,1	;volatile
+   438  06FB  2EFD               	goto	u31
+   439  06FC  2EFE               	goto	u30
+   440  06FD                     u31:
+   441  06FD  2F0F               	goto	l61
+   442  06FE                     u30:
+   443  06FE                     l770:
+   444                           
+   445                           ;keypad_interfacing.c: 106:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   446  06FE  30C3               	movlw	195
+   447  06FF  00F1               	movwf	??_keypad_scan+1
+   448  0700  30CD               	movlw	205
+   449  0701  00F0               	movwf	??_keypad_scan
+   450  0702                     u297:
+   451  0702  0BF0               	decfsz	??_keypad_scan,f
+   452  0703  2F02               	goto	u297
+   453  0704  0BF1               	decfsz	??_keypad_scan+1,f
+   454  0705  2F02               	goto	u297
+   455                           
+   456                           ;keypad_interfacing.c: 107:         if (~(PORTB&0x02)){
+   457  0706  1283               	bcf	3,5	;RP0=0, select bank0
+   458  0707  1303               	bcf	3,6	;RP1=0, select bank0
+   459  0708  0806               	movf	6,w	;volatile
+   460  0709                     l63:	
+   461                           ;keypad_interfacing.c: 108:             while((PORTB&0x02)==0x00);
+   462                           
+   463  0709  1C86               	btfss	6,1	;volatile
+   464  070A  2F0C               	goto	u41
+   465  070B  2F0D               	goto	u40
+   466  070C                     u41:
+   467  070C  2F09               	goto	l63
+   468  070D                     u40:
+   469  070D                     l772:
+   470                           
+   471                           ;keypad_interfacing.c: 109:             return '2';
+   472  070D  3032               	movlw	50
+   473  070E  2FFA               	goto	l59
+   474  070F                     l61:	
+   475                           ;keypad_interfacing.c: 112:     else if ((PORTB&0x01)==0x00){
+   476                           
+   477  070F  1806               	btfsc	6,0	;volatile
+   478  0710  2F12               	goto	u51
+   479  0711  2F13               	goto	u50
+   480  0712                     u51:
+   481  0712  2F24               	goto	l782
+   482  0713                     u50:
+   483  0713                     l776:
+   484                           
+   485                           ;keypad_interfacing.c: 113:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   486  0713  30C3               	movlw	195
+   487  0714  00F1               	movwf	??_keypad_scan+1
+   488  0715  30CD               	movlw	205
+   489  0716  00F0               	movwf	??_keypad_scan
+   490  0717                     u307:
+   491  0717  0BF0               	decfsz	??_keypad_scan,f
+   492  0718  2F17               	goto	u307
+   493  0719  0BF1               	decfsz	??_keypad_scan+1,f
+   494  071A  2F17               	goto	u307
+   495                           
+   496                           ;keypad_interfacing.c: 114:         if (~(PORTB&0x01)){
+   497  071B  1283               	bcf	3,5	;RP0=0, select bank0
+   498  071C  1303               	bcf	3,6	;RP1=0, select bank0
+   499  071D  0806               	movf	6,w	;volatile
+   500  071E                     l69:	
+   501                           ;keypad_interfacing.c: 115:             while((PORTB&0x01)==0x00);
+   502                           
+   503  071E  1C06               	btfss	6,0	;volatile
+   504  071F  2F21               	goto	u61
+   505  0720  2F22               	goto	u60
+   506  0721                     u61:
+   507  0721  2F1E               	goto	l69
+   508  0722                     u60:
+   509  0722                     l778:
+   510                           
+   511                           ;keypad_interfacing.c: 116:             return '3';
+   512  0722  3033               	movlw	51
+   513  0723  2FFA               	goto	l59
+   514  0724                     l782:
+   515                           
+   516                           ;keypad_interfacing.c: 121:     PORTB |= 0x68;
+   517  0724  3068               	movlw	104
+   518  0725  00F0               	movwf	??_keypad_scan
+   519  0726  0870               	movf	??_keypad_scan,w
+   520  0727  0486               	iorwf	6,f	;volatile
+   521                           
+   522                           ;keypad_interfacing.c: 122:     PORTB &= ~0x10;
+   523  0728  30EF               	movlw	239
+   524  0729  00F0               	movwf	??_keypad_scan
+   525  072A  0870               	movf	??_keypad_scan,w
+   526  072B  0586               	andwf	6,f	;volatile
+   527  072C                     l784:
+   528                           
+   529                           ;keypad_interfacing.c: 123:     if ((PORTB&0x04)==0x00){
+   530  072C  1906               	btfsc	6,2	;volatile
+   531  072D  2F2F               	goto	u71
+   532  072E  2F30               	goto	u70
+   533  072F                     u71:
+   534  072F  2F41               	goto	l72
+   535  0730                     u70:
+   536  0730                     l786:
+   537                           
+   538                           ;keypad_interfacing.c: 124:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   539  0730  30C3               	movlw	195
+   540  0731  00F1               	movwf	??_keypad_scan+1
+   541  0732  30CD               	movlw	205
+   542  0733  00F0               	movwf	??_keypad_scan
+   543  0734                     u317:
+   544  0734  0BF0               	decfsz	??_keypad_scan,f
+   545  0735  2F34               	goto	u317
+   546  0736  0BF1               	decfsz	??_keypad_scan+1,f
+   547  0737  2F34               	goto	u317
+   548                           
+   549                           ;keypad_interfacing.c: 125:         if (~(PORTB&0x04)){
+   550  0738  1283               	bcf	3,5	;RP0=0, select bank0
+   551  0739  1303               	bcf	3,6	;RP1=0, select bank0
+   552  073A  0806               	movf	6,w	;volatile
+   553  073B                     l74:	
+   554                           ;keypad_interfacing.c: 126:             while((PORTB&0x04)==0x00);
+   555                           
+   556  073B  1D06               	btfss	6,2	;volatile
+   557  073C  2F3E               	goto	u81
+   558  073D  2F3F               	goto	u80
+   559  073E                     u81:
+   560  073E  2F3B               	goto	l74
+   561  073F                     u80:
+   562  073F                     l788:
+   563                           
+   564                           ;keypad_interfacing.c: 127:             return '4';
+   565  073F  3034               	movlw	52
+   566  0740  2FFA               	goto	l59
+   567  0741                     l72:	
+   568                           ;keypad_interfacing.c: 130:     else if ((PORTB&0x02)==0x00){
+   569                           
+   570  0741  1886               	btfsc	6,1	;volatile
+   571  0742  2F44               	goto	u91
+   572  0743  2F45               	goto	u90
+   573  0744                     u91:
+   574  0744  2F56               	goto	l78
+   575  0745                     u90:
+   576  0745                     l792:
+   577                           
+   578                           ;keypad_interfacing.c: 131:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   579  0745  30C3               	movlw	195
+   580  0746  00F1               	movwf	??_keypad_scan+1
+   581  0747  30CD               	movlw	205
+   582  0748  00F0               	movwf	??_keypad_scan
+   583  0749                     u327:
+   584  0749  0BF0               	decfsz	??_keypad_scan,f
+   585  074A  2F49               	goto	u327
+   586  074B  0BF1               	decfsz	??_keypad_scan+1,f
+   587  074C  2F49               	goto	u327
+   588                           
+   589                           ;keypad_interfacing.c: 132:         if (~(PORTB&0x02)){
+   590  074D  1283               	bcf	3,5	;RP0=0, select bank0
+   591  074E  1303               	bcf	3,6	;RP1=0, select bank0
+   592  074F  0806               	movf	6,w	;volatile
+   593  0750                     l80:	
+   594                           ;keypad_interfacing.c: 133:             while((PORTB&0x02)==0x00);
+   595                           
+   596  0750  1C86               	btfss	6,1	;volatile
+   597  0751  2F53               	goto	u101
+   598  0752  2F54               	goto	u100
+   599  0753                     u101:
+   600  0753  2F50               	goto	l80
+   601  0754                     u100:
+   602  0754                     l794:
+   603                           
+   604                           ;keypad_interfacing.c: 134:             return '5';
+   605  0754  3035               	movlw	53
+   606  0755  2FFA               	goto	l59
+   607  0756                     l78:	
+   608                           ;keypad_interfacing.c: 137:     else if ((PORTB&0x01)==0x00){
+   609                           
+   610  0756  1806               	btfsc	6,0	;volatile
+   611  0757  2F59               	goto	u111
+   612  0758  2F5A               	goto	u110
+   613  0759                     u111:
+   614  0759  2F6B               	goto	l804
+   615  075A                     u110:
+   616  075A                     l798:
+   617                           
+   618                           ;keypad_interfacing.c: 138:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   619  075A  30C3               	movlw	195
+   620  075B  00F1               	movwf	??_keypad_scan+1
+   621  075C  30CD               	movlw	205
+   622  075D  00F0               	movwf	??_keypad_scan
+   623  075E                     u337:
+   624  075E  0BF0               	decfsz	??_keypad_scan,f
+   625  075F  2F5E               	goto	u337
+   626  0760  0BF1               	decfsz	??_keypad_scan+1,f
+   627  0761  2F5E               	goto	u337
+   628                           
+   629                           ;keypad_interfacing.c: 139:         if (~(PORTB&0x01)){
+   630  0762  1283               	bcf	3,5	;RP0=0, select bank0
+   631  0763  1303               	bcf	3,6	;RP1=0, select bank0
+   632  0764  0806               	movf	6,w	;volatile
+   633  0765                     l86:	
+   634                           ;keypad_interfacing.c: 140:             while((PORTB&0x01)==0x00);
+   635                           
+   636  0765  1C06               	btfss	6,0	;volatile
+   637  0766  2F68               	goto	u121
+   638  0767  2F69               	goto	u120
+   639  0768                     u121:
+   640  0768  2F65               	goto	l86
+   641  0769                     u120:
+   642  0769                     l800:
+   643                           
+   644                           ;keypad_interfacing.c: 141:             return '6';
+   645  0769  3036               	movlw	54
+   646  076A  2FFA               	goto	l59
+   647  076B                     l804:
+   648                           
+   649                           ;keypad_interfacing.c: 145:     PORTB |= 0x58;
+   650  076B  3058               	movlw	88
+   651  076C  00F0               	movwf	??_keypad_scan
+   652  076D  0870               	movf	??_keypad_scan,w
+   653  076E  0486               	iorwf	6,f	;volatile
+   654                           
+   655                           ;keypad_interfacing.c: 146:     PORTB &= ~0x20;
+   656  076F  30DF               	movlw	223
+   657  0770  00F0               	movwf	??_keypad_scan
+   658  0771  0870               	movf	??_keypad_scan,w
+   659  0772  0586               	andwf	6,f	;volatile
+   660  0773                     l806:
+   661                           
+   662                           ;keypad_interfacing.c: 147:     if ((PORTB&0x04)==0x00){
+   663  0773  1906               	btfsc	6,2	;volatile
+   664  0774  2F76               	goto	u131
+   665  0775  2F77               	goto	u130
+   666  0776                     u131:
+   667  0776  2F88               	goto	l89
+   668  0777                     u130:
+   669  0777                     l808:
+   670                           
+   671                           ;keypad_interfacing.c: 148:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   672  0777  30C3               	movlw	195
+   673  0778  00F1               	movwf	??_keypad_scan+1
+   674  0779  30CD               	movlw	205
+   675  077A  00F0               	movwf	??_keypad_scan
+   676  077B                     u347:
+   677  077B  0BF0               	decfsz	??_keypad_scan,f
+   678  077C  2F7B               	goto	u347
+   679  077D  0BF1               	decfsz	??_keypad_scan+1,f
+   680  077E  2F7B               	goto	u347
+   681                           
+   682                           ;keypad_interfacing.c: 149:         if (~(PORTB&0x04)){
+   683  077F  1283               	bcf	3,5	;RP0=0, select bank0
+   684  0780  1303               	bcf	3,6	;RP1=0, select bank0
+   685  0781  0806               	movf	6,w	;volatile
+   686  0782                     l91:	
+   687                           ;keypad_interfacing.c: 150:             while((PORTB&0x04)==0x00);
+   688                           
+   689  0782  1D06               	btfss	6,2	;volatile
+   690  0783  2F85               	goto	u141
+   691  0784  2F86               	goto	u140
+   692  0785                     u141:
+   693  0785  2F82               	goto	l91
+   694  0786                     u140:
+   695  0786                     l810:
+   696                           
+   697                           ;keypad_interfacing.c: 151:             return '7';
+   698  0786  3037               	movlw	55
+   699  0787  2FFA               	goto	l59
+   700  0788                     l89:	
+   701                           ;keypad_interfacing.c: 154:     else if ((PORTB&0x02)==0x00){
+   702                           
+   703  0788  1886               	btfsc	6,1	;volatile
+   704  0789  2F8B               	goto	u151
+   705  078A  2F8C               	goto	u150
+   706  078B                     u151:
+   707  078B  2F9D               	goto	l95
+   708  078C                     u150:
+   709  078C                     l814:
+   710                           
+   711                           ;keypad_interfacing.c: 155:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   712  078C  30C3               	movlw	195
+   713  078D  00F1               	movwf	??_keypad_scan+1
+   714  078E  30CD               	movlw	205
+   715  078F  00F0               	movwf	??_keypad_scan
+   716  0790                     u357:
+   717  0790  0BF0               	decfsz	??_keypad_scan,f
+   718  0791  2F90               	goto	u357
+   719  0792  0BF1               	decfsz	??_keypad_scan+1,f
+   720  0793  2F90               	goto	u357
+   721                           
+   722                           ;keypad_interfacing.c: 156:         if (~(PORTB&0x02)){
+   723  0794  1283               	bcf	3,5	;RP0=0, select bank0
+   724  0795  1303               	bcf	3,6	;RP1=0, select bank0
+   725  0796  0806               	movf	6,w	;volatile
+   726  0797                     l97:	
+   727                           ;keypad_interfacing.c: 157:             while((PORTB&0x02)==0x00);
+   728                           
+   729  0797  1C86               	btfss	6,1	;volatile
+   730  0798  2F9A               	goto	u161
+   731  0799  2F9B               	goto	u160
+   732  079A                     u161:
+   733  079A  2F97               	goto	l97
+   734  079B                     u160:
+   735  079B                     l816:
+   736                           
+   737                           ;keypad_interfacing.c: 158:             return '8';
+   738  079B  3038               	movlw	56
+   739  079C  2FFA               	goto	l59
+   740  079D                     l95:	
+   741                           ;keypad_interfacing.c: 161:     else if ((PORTB&0x01)==0x00){
+   742                           
+   743  079D  1806               	btfsc	6,0	;volatile
+   744  079E  2FA0               	goto	u171
+   745  079F  2FA1               	goto	u170
+   746  07A0                     u171:
+   747  07A0  2FB2               	goto	l826
+   748  07A1                     u170:
+   749  07A1                     l820:
+   750                           
+   751                           ;keypad_interfacing.c: 162:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   752  07A1  30C3               	movlw	195
+   753  07A2  00F1               	movwf	??_keypad_scan+1
+   754  07A3  30CD               	movlw	205
+   755  07A4  00F0               	movwf	??_keypad_scan
+   756  07A5                     u367:
+   757  07A5  0BF0               	decfsz	??_keypad_scan,f
+   758  07A6  2FA5               	goto	u367
+   759  07A7  0BF1               	decfsz	??_keypad_scan+1,f
+   760  07A8  2FA5               	goto	u367
+   761                           
+   762                           ;keypad_interfacing.c: 163:         if (~(PORTB&0x01)){
+   763  07A9  1283               	bcf	3,5	;RP0=0, select bank0
+   764  07AA  1303               	bcf	3,6	;RP1=0, select bank0
+   765  07AB  0806               	movf	6,w	;volatile
+   766  07AC                     l103:	
+   767                           ;keypad_interfacing.c: 164:             while((PORTB&0x01)==0x00);
+   768                           
+   769  07AC  1C06               	btfss	6,0	;volatile
+   770  07AD  2FAF               	goto	u181
+   771  07AE  2FB0               	goto	u180
+   772  07AF                     u181:
+   773  07AF  2FAC               	goto	l103
+   774  07B0                     u180:
+   775  07B0                     l822:
+   776                           
+   777                           ;keypad_interfacing.c: 165:             return '9';
+   778  07B0  3039               	movlw	57
+   779  07B1  2FFA               	goto	l59
+   780  07B2                     l826:
+   781                           
+   782                           ;keypad_interfacing.c: 169:     PORTB |= 0x38;
+   783  07B2  3038               	movlw	56
+   784  07B3  00F0               	movwf	??_keypad_scan
+   785  07B4  0870               	movf	??_keypad_scan,w
+   786  07B5  0486               	iorwf	6,f	;volatile
+   787                           
+   788                           ;keypad_interfacing.c: 170:     PORTB &= ~0x40;
+   789  07B6  30BF               	movlw	191
+   790  07B7  00F0               	movwf	??_keypad_scan
+   791  07B8  0870               	movf	??_keypad_scan,w
+   792  07B9  0586               	andwf	6,f	;volatile
+   793  07BA                     l828:
+   794                           
+   795                           ;keypad_interfacing.c: 171:     if ((PORTB&0x04)==0x00){
+   796  07BA  1906               	btfsc	6,2	;volatile
+   797  07BB  2FBD               	goto	u191
+   798  07BC  2FBE               	goto	u190
+   799  07BD                     u191:
+   800  07BD  2FCF               	goto	l106
+   801  07BE                     u190:
+   802  07BE                     l830:
+   803                           
+   804                           ;keypad_interfacing.c: 172:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   805  07BE  30C3               	movlw	195
+   806  07BF  00F1               	movwf	??_keypad_scan+1
+   807  07C0  30CD               	movlw	205
+   808  07C1  00F0               	movwf	??_keypad_scan
+   809  07C2                     u377:
+   810  07C2  0BF0               	decfsz	??_keypad_scan,f
+   811  07C3  2FC2               	goto	u377
+   812  07C4  0BF1               	decfsz	??_keypad_scan+1,f
+   813  07C5  2FC2               	goto	u377
+   814                           
+   815                           ;keypad_interfacing.c: 173:         if (~(PORTB&0x04)){
+   816  07C6  1283               	bcf	3,5	;RP0=0, select bank0
+   817  07C7  1303               	bcf	3,6	;RP1=0, select bank0
+   818  07C8  0806               	movf	6,w	;volatile
+   819  07C9                     l108:	
+   820                           ;keypad_interfacing.c: 174:             while((PORTB&0x04)==0x00);
+   821                           
+   822  07C9  1D06               	btfss	6,2	;volatile
+   823  07CA  2FCC               	goto	u201
+   824  07CB  2FCD               	goto	u200
+   825  07CC                     u201:
+   826  07CC  2FC9               	goto	l108
+   827  07CD                     u200:
+   828  07CD                     l832:
+   829                           
+   830                           ;keypad_interfacing.c: 175:             return '*';
+   831  07CD  302A               	movlw	42
+   832  07CE  2FFA               	goto	l59
+   833  07CF                     l106:	
+   834                           ;keypad_interfacing.c: 178:     else if ((PORTB&0x02)==0x00){
+   835                           
+   836  07CF  1886               	btfsc	6,1	;volatile
+   837  07D0  2FD2               	goto	u211
+   838  07D1  2FD3               	goto	u210
+   839  07D2                     u211:
+   840  07D2  2FE4               	goto	l112
+   841  07D3                     u210:
+   842  07D3                     l836:
+   843                           
+   844                           ;keypad_interfacing.c: 179:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   845  07D3  30C3               	movlw	195
+   846  07D4  00F1               	movwf	??_keypad_scan+1
+   847  07D5  30CD               	movlw	205
+   848  07D6  00F0               	movwf	??_keypad_scan
+   849  07D7                     u387:
+   850  07D7  0BF0               	decfsz	??_keypad_scan,f
+   851  07D8  2FD7               	goto	u387
+   852  07D9  0BF1               	decfsz	??_keypad_scan+1,f
+   853  07DA  2FD7               	goto	u387
+   854                           
+   855                           ;keypad_interfacing.c: 180:         if (~(PORTB&0x02)){
+   856  07DB  1283               	bcf	3,5	;RP0=0, select bank0
+   857  07DC  1303               	bcf	3,6	;RP1=0, select bank0
+   858  07DD  0806               	movf	6,w	;volatile
+   859  07DE                     l114:	
+   860                           ;keypad_interfacing.c: 181:             while((PORTB&0x02)==0x00);
+   861                           
+   862  07DE  1C86               	btfss	6,1	;volatile
+   863  07DF  2FE1               	goto	u221
+   864  07E0  2FE2               	goto	u220
+   865  07E1                     u221:
+   866  07E1  2FDE               	goto	l114
+   867  07E2                     u220:
+   868  07E2                     l838:
+   869                           
+   870                           ;keypad_interfacing.c: 182:             return '0';
+   871  07E2  3030               	movlw	48
+   872  07E3  2FFA               	goto	l59
+   873  07E4                     l112:	
+   874                           ;keypad_interfacing.c: 185:     else if ((PORTB&0x01)==0x00){
+   875                           
+   876  07E4  1806               	btfsc	6,0	;volatile
+   877  07E5  2FE7               	goto	u231
+   878  07E6  2FE8               	goto	u230
+   879  07E7                     u231:
+   880  07E7  2FF9               	goto	l848
+   881  07E8                     u230:
+   882  07E8                     l842:
+   883                           
+   884                           ;keypad_interfacing.c: 186:         _delay((unsigned long)((100)*(6000000/4000.0)));
+   885  07E8  30C3               	movlw	195
+   886  07E9  00F1               	movwf	??_keypad_scan+1
+   887  07EA  30CD               	movlw	205
+   888  07EB  00F0               	movwf	??_keypad_scan
+   889  07EC                     u397:
+   890  07EC  0BF0               	decfsz	??_keypad_scan,f
+   891  07ED  2FEC               	goto	u397
+   892  07EE  0BF1               	decfsz	??_keypad_scan+1,f
+   893  07EF  2FEC               	goto	u397
+   894                           
+   895                           ;keypad_interfacing.c: 187:         if (~(PORTB&0x01)){
+   896  07F0  1283               	bcf	3,5	;RP0=0, select bank0
+   897  07F1  1303               	bcf	3,6	;RP1=0, select bank0
+   898  07F2  0806               	movf	6,w	;volatile
+   899  07F3                     l120:	
+   900                           ;keypad_interfacing.c: 188:             while((PORTB&0x01)==0x00);
+   901                           
+   902  07F3  1C06               	btfss	6,0	;volatile
+   903  07F4  2FF6               	goto	u241
+   904  07F5  2FF7               	goto	u240
+   905  07F6                     u241:
+   906  07F6  2FF3               	goto	l120
+   907  07F7                     u240:
+   908  07F7                     l844:
+   909                           
+   910                           ;keypad_interfacing.c: 189:             return '#';
+   911  07F7  3023               	movlw	35
+   912  07F8  2FFA               	goto	l59
+   913  07F9                     l848:
+   914                           
+   915                           ;keypad_interfacing.c: 193:     return 'x';
+   916  07F9  3078               	movlw	120
+   917  07FA                     l59:
+   918  07FA  0008               	return
+   919  07FB                     __end_of_keypad_scan:
+   920                           
+   921                           	psect	text2
+   922  05FA                     __ptext2:	
+   923 ;; *************** function _keypad_init *****************
+   924 ;; Defined at:
+   925 ;;		line 49 in file "keypad_interfacing.c"
+   926 ;; Parameters:    Size  Location     Type
+   927 ;;		None
+   928 ;; Auto vars:     Size  Location     Type
+   929 ;;		None
+   930 ;; Return value:  Size  Location     Type
+   931 ;;                  1    wreg      void 
+   932 ;; Registers used:
+   933 ;;		wreg, status,2, status,0
+   934 ;; Tracked objects:
+   935 ;;		On entry : 0/0
+   936 ;;		On exit  : 0/0
+   937 ;;		Unchanged: 0/0
+   938 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   939 ;;      Params:         0       0       0       0       0
+   940 ;;      Locals:         0       0       0       0       0
+   941 ;;      Temps:          1       0       0       0       0
+   942 ;;      Totals:         1       0       0       0       0
+   943 ;;Total ram usage:        1 bytes
+   944 ;; Hardware stack levels used: 1
+   945 ;; This function calls:
+   946 ;;		Nothing
+   947 ;; This function is called by:
+   948 ;;		_main
+   949 ;; This function uses a non-reentrant model
+   950 ;;
+   951                           
+   952  05FA                     _keypad_init:	
+   953                           ;psect for function _keypad_init
+   954                           
+   955  05FA                     l728:	
+   956                           ;incstack = 0
+   957                           ; Regs used in _keypad_init: [wreg+status,2+status,0]
+   958                           
+   959                           
+   960                           ;keypad_interfacing.c: 51:     TRISB = 0x07;
+   961  05FA  3007               	movlw	7
+   962  05FB  1683               	bsf	3,5	;RP0=1, select bank1
+   963  05FC  1303               	bcf	3,6	;RP1=0, select bank1
+   964  05FD  0086               	movwf	6	;volatile
+   965  05FE                     l730:
+   966                           
+   967                           ;keypad_interfacing.c: 52:     OPTION_REG &= 0x7F;
+   968  05FE  307F               	movlw	127
+   969  05FF  00F0               	movwf	??_keypad_init
+   970  0600  0870               	movf	??_keypad_init,w
+   971  0601  0581               	andwf	1,f	;volatile
+   972  0602                     l732:
+   973                           
+   974                           ;keypad_interfacing.c: 53:     PORTB = 0x00;
+   975  0602  1283               	bcf	3,5	;RP0=0, select bank0
+   976  0603  1303               	bcf	3,6	;RP1=0, select bank0
+   977  0604  0186               	clrf	6	;volatile
+   978  0605                     l42:
+   979  0605  0008               	return
+   980  0606                     __end_of_keypad_init:
+   981                           
+   982                           	psect	text3
+   983  0618                     __ptext3:	
+   984 ;; *************** function _data *****************
+   985 ;; Defined at:
+   986 ;;		line 206 in file "keypad_interfacing.c"
+   987 ;; Parameters:    Size  Location     Type
+   988 ;;  n               1    wreg     unsigned char 
+   989 ;; Auto vars:     Size  Location     Type
+   990 ;;  n               1    2[COMMON] unsigned char 
+   991 ;; Return value:  Size  Location     Type
+   992 ;;                  1    wreg      void 
+   993 ;; Registers used:
+   994 ;;		wreg
+   995 ;; Tracked objects:
+   996 ;;		On entry : 0/0
+   997 ;;		On exit  : 0/0
+   998 ;;		Unchanged: 0/0
+   999 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1000 ;;      Params:         0       0       0       0       0
+  1001 ;;      Locals:         1       0       0       0       0
+  1002 ;;      Temps:          2       0       0       0       0
+  1003 ;;      Totals:         3       0       0       0       0
+  1004 ;;Total ram usage:        3 bytes
+  1005 ;; Hardware stack levels used: 1
+  1006 ;; This function calls:
+  1007 ;;		Nothing
+  1008 ;; This function is called by:
+  1009 ;;		_main
+  1010 ;; This function uses a non-reentrant model
+  1011 ;;
+  1012                           
+  1013  0618                     _data:	
+  1014                           ;psect for function _data
+  1015                           
+  1016                           
+  1017                           ;incstack = 0
+  1018                           ; Regs used in _data: [wreg]
+  1019                           ;data@n stored from wreg
+  1020  0618  00F2               	movwf	data@n
+  1021  0619                     l862:
+  1022                           
+  1023                           ;keypad_interfacing.c: 206: void data(unsigned char n);keypad_interfacing.c: 207: {;keyp
+      +                          ad_interfacing.c: 208:    PORTC = 0x20 ;
+  1024  0619  3020               	movlw	32
+  1025  061A  1283               	bcf	3,5	;RP0=0, select bank0
+  1026  061B  1303               	bcf	3,6	;RP1=0, select bank0
+  1027  061C  0087               	movwf	7	;volatile
+  1028                           
+  1029                           ;keypad_interfacing.c: 209:    PORTD = n ;
+  1030  061D  0872               	movf	data@n,w
+  1031  061E  0088               	movwf	8	;volatile
+  1032                           
+  1033                           ;keypad_interfacing.c: 210:    PORTC = 0xA0 ;
+  1034  061F  30A0               	movlw	160
+  1035  0620  0087               	movwf	7	;volatile
+  1036                           
+  1037                           ;keypad_interfacing.c: 211:    PORTC = 0x20 ;
+  1038  0621  3020               	movlw	32
+  1039  0622  0087               	movwf	7	;volatile
+  1040                           
+  1041                           ;keypad_interfacing.c: 212:    _delay((unsigned long)((100)*(6000000/4000.0)));
+  1042  0623  30C3               	movlw	195
+  1043  0624  00F1               	movwf	??_data+1
+  1044  0625  30CD               	movlw	205
+  1045  0626  00F0               	movwf	??_data
+  1046  0627                     u407:
+  1047  0627  0BF0               	decfsz	??_data,f
+  1048  0628  2E27               	goto	u407
+  1049  0629  0BF1               	decfsz	??_data+1,f
+  1050  062A  2E27               	goto	u407
+  1051  062B                     l128:
+  1052  062B  0008               	return
+  1053  062C                     __end_of_data:
+  1054                           
+  1055                           	psect	text4
+  1056  062C                     __ptext4:	
+  1057 ;; *************** function _check_LCD *****************
+  1058 ;; Defined at:
+  1059 ;;		line 78 in file "keypad_interfacing.c"
+  1060 ;; Parameters:    Size  Location     Type
+  1061 ;;		None
+  1062 ;; Auto vars:     Size  Location     Type
+  1063 ;;		None
+  1064 ;; Return value:  Size  Location     Type
+  1065 ;;                  1    wreg      void 
+  1066 ;; Registers used:
+  1067 ;;		wreg, status,2, status,0, pclath, cstack
+  1068 ;; Tracked objects:
+  1069 ;;		On entry : 0/0
+  1070 ;;		On exit  : 0/0
+  1071 ;;		Unchanged: 0/0
+  1072 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1073 ;;      Params:         0       0       0       0       0
+  1074 ;;      Locals:         0       0       0       0       0
+  1075 ;;      Temps:          1       0       0       0       0
+  1076 ;;      Totals:         1       0       0       0       0
+  1077 ;;Total ram usage:        1 bytes
+  1078 ;; Hardware stack levels used: 1
+  1079 ;; Hardware stack levels required when called: 1
+  1080 ;; This function calls:
+  1081 ;;		_command
+  1082 ;; This function is called by:
+  1083 ;;		_main
+  1084 ;; This function uses a non-reentrant model
+  1085 ;;
+  1086                           
+  1087  062C                     _check_LCD:	
+  1088                           ;psect for function _check_LCD
+  1089                           
+  1090  062C                     l852:	
+  1091                           ;incstack = 0
+  1092                           ; Regs used in _check_LCD: [wreg+status,2+status,0+pclath+cstack]
+  1093                           
+  1094                           
+  1095                           ;keypad_interfacing.c: 80:     cnt++;
+  1096  062C  3001               	movlw	1
+  1097  062D  00F3               	movwf	??_check_LCD
+  1098  062E  0873               	movf	??_check_LCD,w
+  1099  062F  07F7               	addwf	_cnt,f
+  1100                           
+  1101                           ;keypad_interfacing.c: 82:     if (cnt==17) {
+  1102  0630  3011               	movlw	17
+  1103  0631  0677               	xorwf	_cnt,w
+  1104  0632  1D03               	btfss	3,2
+  1105  0633  2E35               	goto	u251
+  1106  0634  2E36               	goto	u250
+  1107  0635                     u251:
+  1108  0635  2E3D               	goto	l856
+  1109  0636                     u250:
+  1110  0636                     l854:
+  1111                           
+  1112                           ;keypad_interfacing.c: 83:         command(0xC0);
+  1113  0636  30C0               	movlw	192
+  1114  0637  120A  118A  2606  120A  118A  	fcall	_command
+  1115                           
+  1116                           ;keypad_interfacing.c: 84:     }
+  1117  063C  2E50               	goto	l51
+  1118  063D                     l856:
+  1119  063D  3021               	movlw	33
+  1120  063E  0677               	xorwf	_cnt,w
+  1121  063F  1D03               	btfss	3,2
+  1122  0640  2E42               	goto	u261
+  1123  0641  2E43               	goto	u260
+  1124  0642                     u261:
+  1125  0642  2E50               	goto	l51
+  1126  0643                     u260:
+  1127  0643                     l858:
+  1128                           
+  1129                           ;keypad_interfacing.c: 87:         command(0x01);
+  1130  0643  3001               	movlw	1
+  1131  0644  120A  118A  2606  120A  118A  	fcall	_command
+  1132                           
+  1133                           ;keypad_interfacing.c: 88:         command(0x80);
+  1134  0649  3080               	movlw	128
+  1135  064A  120A  118A  2606  120A  118A  	fcall	_command
+  1136  064F                     l860:
+  1137                           
+  1138                           ;keypad_interfacing.c: 89:         cnt=0;
+  1139  064F  01F7               	clrf	_cnt
+  1140  0650                     l51:
+  1141  0650  0008               	return
+  1142  0651                     __end_of_check_LCD:
+  1143                           
+  1144                           	psect	text5
+  1145  0678                     __ptext5:	
+  1146 ;; *************** function _LCD_init *****************
+  1147 ;; Defined at:
+  1148 ;;		line 56 in file "keypad_interfacing.c"
+  1149 ;; Parameters:    Size  Location     Type
+  1150 ;;		None
+  1151 ;; Auto vars:     Size  Location     Type
+  1152 ;;		None
+  1153 ;; Return value:  Size  Location     Type
+  1154 ;;                  1    wreg      void 
+  1155 ;; Registers used:
+  1156 ;;		wreg, status,2, status,0, pclath, cstack
+  1157 ;; Tracked objects:
+  1158 ;;		On entry : 0/0
+  1159 ;;		On exit  : 0/0
+  1160 ;;		Unchanged: 0/0
+  1161 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1162 ;;      Params:         0       0       0       0       0
+  1163 ;;      Locals:         0       0       0       0       0
+  1164 ;;      Temps:          2       0       0       0       0
+  1165 ;;      Totals:         2       0       0       0       0
+  1166 ;;Total ram usage:        2 bytes
+  1167 ;; Hardware stack levels used: 1
+  1168 ;; Hardware stack levels required when called: 1
+  1169 ;; This function calls:
+  1170 ;;		_command
+  1171 ;; This function is called by:
+  1172 ;;		_main
+  1173 ;; This function uses a non-reentrant model
+  1174 ;;
+  1175                           
+  1176  0678                     _LCD_init:	
+  1177                           ;psect for function _LCD_init
+  1178                           
+  1179  0678                     l734:	
+  1180                           ;incstack = 0
+  1181                           ; Regs used in _LCD_init: [wreg+status,2+status,0+pclath+cstack]
+  1182                           
+  1183                           
+  1184                           ;keypad_interfacing.c: 58:     TRISD = 0x00 ;
+  1185  0678  1683               	bsf	3,5	;RP0=1, select bank1
+  1186  0679  1303               	bcf	3,6	;RP1=0, select bank1
+  1187  067A  0188               	clrf	8	;volatile
+  1188                           
+  1189                           ;keypad_interfacing.c: 59:     TRISC = 0x00 ;
+  1190  067B  0187               	clrf	7	;volatile
+  1191                           
+  1192                           ;keypad_interfacing.c: 60:     PORTC = 0x00 ;
+  1193  067C  1283               	bcf	3,5	;RP0=0, select bank0
+  1194  067D  1303               	bcf	3,6	;RP1=0, select bank0
+  1195  067E  0187               	clrf	7	;volatile
+  1196                           
+  1197                           ;keypad_interfacing.c: 61:     PORTD = 0x00 ;
+  1198  067F  0188               	clrf	8	;volatile
+  1199  0680                     l736:
+  1200                           
+  1201                           ;keypad_interfacing.c: 63:     command(0x38) ;
+  1202  0680  3038               	movlw	56
+  1203  0681  120A  118A  2606  120A  118A  	fcall	_command
+  1204  0686                     l738:
+  1205                           
+  1206                           ;keypad_interfacing.c: 64:     _delay((unsigned long)((10)*(6000000/4000.0)));
+  1207  0686  3014               	movlw	20
+  1208  0687  00F4               	movwf	??_LCD_init+1
+  1209  0688  3079               	movlw	121
+  1210  0689  00F3               	movwf	??_LCD_init
+  1211  068A                     u417:
+  1212  068A  0BF3               	decfsz	??_LCD_init,f
+  1213  068B  2E8A               	goto	u417
+  1214  068C  0BF4               	decfsz	??_LCD_init+1,f
+  1215  068D  2E8A               	goto	u417
+  1216  068E  2E8F               	nop2
+  1217  068F                     l740:
+  1218                           
+  1219                           ;keypad_interfacing.c: 65:     command(0x08) ;
+  1220  068F  3008               	movlw	8
+  1221  0690  120A  118A  2606  120A  118A  	fcall	_command
+  1222  0695                     l742:
+  1223                           
+  1224                           ;keypad_interfacing.c: 66:     _delay((unsigned long)((10)*(6000000/4000.0)));
+  1225  0695  3014               	movlw	20
+  1226  0696  00F4               	movwf	??_LCD_init+1
+  1227  0697  3079               	movlw	121
+  1228  0698  00F3               	movwf	??_LCD_init
+  1229  0699                     u427:
+  1230  0699  0BF3               	decfsz	??_LCD_init,f
+  1231  069A  2E99               	goto	u427
+  1232  069B  0BF4               	decfsz	??_LCD_init+1,f
+  1233  069C  2E99               	goto	u427
+  1234  069D  2E9E               	nop2
+  1235  069E                     l744:
+  1236                           
+  1237                           ;keypad_interfacing.c: 67:     command(0x01) ;
+  1238  069E  3001               	movlw	1
+  1239  069F  120A  118A  2606  120A  118A  	fcall	_command
+  1240  06A4                     l746:
+  1241                           
+  1242                           ;keypad_interfacing.c: 68:     _delay((unsigned long)((10)*(6000000/4000.0)));
+  1243  06A4  3014               	movlw	20
+  1244  06A5  00F4               	movwf	??_LCD_init+1
+  1245  06A6  3079               	movlw	121
+  1246  06A7  00F3               	movwf	??_LCD_init
+  1247  06A8                     u437:
+  1248  06A8  0BF3               	decfsz	??_LCD_init,f
+  1249  06A9  2EA8               	goto	u437
+  1250  06AA  0BF4               	decfsz	??_LCD_init+1,f
+  1251  06AB  2EA8               	goto	u437
+  1252  06AC  2EAD               	nop2
+  1253  06AD                     l748:
+  1254                           
+  1255                           ;keypad_interfacing.c: 69:     command(0x0C) ;
+  1256  06AD  300C               	movlw	12
+  1257  06AE  120A  118A  2606  120A  118A  	fcall	_command
+  1258  06B3                     l750:
+  1259                           
+  1260                           ;keypad_interfacing.c: 70:     _delay((unsigned long)((10)*(6000000/4000.0)));
+  1261  06B3  3014               	movlw	20
+  1262  06B4  00F4               	movwf	??_LCD_init+1
+  1263  06B5  3079               	movlw	121
+  1264  06B6  00F3               	movwf	??_LCD_init
+  1265  06B7                     u447:
+  1266  06B7  0BF3               	decfsz	??_LCD_init,f
+  1267  06B8  2EB7               	goto	u447
+  1268  06B9  0BF4               	decfsz	??_LCD_init+1,f
+  1269  06BA  2EB7               	goto	u447
+  1270  06BB  2EBC               	nop2
+  1271  06BC                     l752:
+  1272                           
+  1273                           ;keypad_interfacing.c: 71:     command(0x80);
+  1274  06BC  3080               	movlw	128
+  1275  06BD  120A  118A  2606  120A  118A  	fcall	_command
+  1276  06C2                     l754:
+  1277                           
+  1278                           ;keypad_interfacing.c: 72:     _delay((unsigned long)((10)*(6000000/4000.0)));
+  1279  06C2  3014               	movlw	20
+  1280  06C3  00F4               	movwf	??_LCD_init+1
+  1281  06C4  3079               	movlw	121
+  1282  06C5  00F3               	movwf	??_LCD_init
+  1283  06C6                     u457:
+  1284  06C6  0BF3               	decfsz	??_LCD_init,f
+  1285  06C7  2EC6               	goto	u457
+  1286  06C8  0BF4               	decfsz	??_LCD_init+1,f
+  1287  06C9  2EC6               	goto	u457
+  1288  06CA  2ECB               	nop2
+  1289  06CB                     l756:
+  1290                           
+  1291                           ;keypad_interfacing.c: 73:     command(0x06);
+  1292  06CB  3006               	movlw	6
+  1293  06CC  120A  118A  2606  120A  118A  	fcall	_command
+  1294  06D1                     l758:
+  1295                           
+  1296                           ;keypad_interfacing.c: 74:     _delay((unsigned long)((10)*(6000000/4000.0)));
+  1297  06D1  3014               	movlw	20
+  1298  06D2  00F4               	movwf	??_LCD_init+1
+  1299  06D3  3079               	movlw	121
+  1300  06D4  00F3               	movwf	??_LCD_init
+  1301  06D5                     u467:
+  1302  06D5  0BF3               	decfsz	??_LCD_init,f
+  1303  06D6  2ED5               	goto	u467
+  1304  06D7  0BF4               	decfsz	??_LCD_init+1,f
+  1305  06D8  2ED5               	goto	u467
+  1306  06D9  2EDA               	nop2
+  1307  06DA                     l45:
+  1308  06DA  0008               	return
+  1309  06DB                     __end_of_LCD_init:
+  1310                           
+  1311                           	psect	text6
+  1312  0606                     __ptext6:	
+  1313 ;; *************** function _command *****************
+  1314 ;; Defined at:
+  1315 ;;		line 196 in file "keypad_interfacing.c"
+  1316 ;; Parameters:    Size  Location     Type
+  1317 ;;  m               1    wreg     unsigned char 
+  1318 ;; Auto vars:     Size  Location     Type
+  1319 ;;  m               1    2[COMMON] unsigned char 
+  1320 ;; Return value:  Size  Location     Type
+  1321 ;;                  1    wreg      void 
+  1322 ;; Registers used:
+  1323 ;;		wreg, status,2
+  1324 ;; Tracked objects:
+  1325 ;;		On entry : 0/0
+  1326 ;;		On exit  : 0/0
+  1327 ;;		Unchanged: 0/0
+  1328 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1329 ;;      Params:         0       0       0       0       0
+  1330 ;;      Locals:         1       0       0       0       0
+  1331 ;;      Temps:          2       0       0       0       0
+  1332 ;;      Totals:         3       0       0       0       0
+  1333 ;;Total ram usage:        3 bytes
+  1334 ;; Hardware stack levels used: 1
+  1335 ;; This function calls:
+  1336 ;;		Nothing
+  1337 ;; This function is called by:
+  1338 ;;		_LCD_init
+  1339 ;;		_check_LCD
+  1340 ;; This function uses a non-reentrant model
+  1341 ;;
+  1342                           
+  1343  0606                     _command:	
+  1344                           ;psect for function _command
+  1345                           
+  1346                           
+  1347                           ;incstack = 0
+  1348                           ; Regs used in _command: [wreg+status,2]
+  1349                           ;command@m stored from wreg
+  1350  0606  00F2               	movwf	command@m
+  1351  0607                     l720:
+  1352                           
+  1353                           ;keypad_interfacing.c: 196: void command(unsigned char m);keypad_interfacing.c: 197: {;k
+      +                          eypad_interfacing.c: 198:    PORTC = 0x00 ;
+  1354  0607  1283               	bcf	3,5	;RP0=0, select bank0
+  1355  0608  1303               	bcf	3,6	;RP1=0, select bank0
+  1356  0609  0187               	clrf	7	;volatile
+  1357  060A                     l722:
+  1358                           
+  1359                           ;keypad_interfacing.c: 199:    PORTD = m ;
+  1360  060A  0872               	movf	command@m,w
+  1361  060B  0088               	movwf	8	;volatile
+  1362  060C                     l724:
+  1363                           
+  1364                           ;keypad_interfacing.c: 200:    PORTC = 0x80 ;
+  1365  060C  3080               	movlw	128
+  1366  060D  0087               	movwf	7	;volatile
+  1367                           
+  1368                           ;keypad_interfacing.c: 201:    PORTC = 0x00 ;
+  1369  060E  0187               	clrf	7	;volatile
+  1370  060F                     l726:
+  1371                           
+  1372                           ;keypad_interfacing.c: 202:    _delay((unsigned long)((100)*(6000000/4000.0)));
+  1373  060F  30C3               	movlw	195
+  1374  0610  00F1               	movwf	??_command+1
+  1375  0611  30CD               	movlw	205
+  1376  0612  00F0               	movwf	??_command
+  1377  0613                     u477:
+  1378  0613  0BF0               	decfsz	??_command,f
+  1379  0614  2E13               	goto	u477
+  1380  0615  0BF1               	decfsz	??_command+1,f
+  1381  0616  2E13               	goto	u477
+  1382  0617                     l125:
+  1383  0617  0008               	return
+  1384  0618                     __end_of_command:
+  1385  007E                     btemp	set	126	;btemp
+  1386  007E                     wtemp0	set	126
+  1387                           
+  1388                           	psect	idloc
+  1389                           
+  1390                           ;Config register IDLOC0 @ 0x2000
+  1391                           ;	unspecified, using default values
+  1392  2000                     	org	8192
+  1393  2000  3FFF               	dw	16383
+  1394                           
+  1395                           ;Config register IDLOC1 @ 0x2001
+  1396                           ;	unspecified, using default values
+  1397  2001                     	org	8193
+  1398  2001  3FFF               	dw	16383
+  1399                           
+  1400                           ;Config register IDLOC2 @ 0x2002
+  1401                           ;	unspecified, using default values
+  1402  2002                     	org	8194
+  1403  2002  3FFF               	dw	16383
+  1404                           
+  1405                           ;Config register IDLOC3 @ 0x2003
+  1406                           ;	unspecified, using default values
+  1407  2003                     	org	8195
+  1408  2003  3FFF               	dw	16383
+  1409                           
+  1410                           	psect	config
+  1411                           
+  1412                           ;Config register CONFIG @ 0x2007
+  1413                           ;	Oscillator Selection bits
+  1414                           ;	FOSC = EXTRC, RC oscillator
+  1415                           ;	Watchdog Timer Enable bit
+  1416                           ;	WDTE = OFF, WDT disabled
+  1417                           ;	Power-up Timer Enable bit
+  1418                           ;	PWRTE = OFF, PWRT disabled
+  1419                           ;	Brown-out Reset Enable bit
+  1420                           ;	BOREN = OFF, BOR disabled
+  1421                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+  1422                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+  1423                           ;	Data EEPROM Memory Code Protection bit
+  1424                           ;	CPD = OFF, Data EEPROM code protection off
+  1425                           ;	Flash Program Memory Write Enable bits
+  1426                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+  1427                           ;	In-Circuit Debugger Mode bit
+  1428                           ;	DEBUG = 0x1, unprogrammed default
+  1429                           ;	Flash Program Memory Code Protection bit
+  1430                           ;	CP = OFF, Code protection off
+  1431  2007                     	org	8199
+  1432  2007  3F3B               	dw	16187
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         1
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      7       8
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_LCD_init
+    _check_LCD->_command
+    _LCD_init->_command
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0      75
+                                              5 COMMON     2     2      0
+                           _LCD_init
+                          _check_LCD
+                               _data
+                        _keypad_init
+                        _keypad_scan
+ ---------------------------------------------------------------------------------
+ (1) _keypad_scan                                          2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _keypad_init                                          1     1      0       0
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _data                                                 3     3      0      15
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ (1) _check_LCD                                            1     1      0      15
+                                              3 COMMON     1     1      0
+                            _command
+ ---------------------------------------------------------------------------------
+ (1) _LCD_init                                             2     2      0      15
+                                              3 COMMON     2     2      0
+                            _command
+ ---------------------------------------------------------------------------------
+ (2) _command                                              3     3      0      15
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _LCD_init
+     _command
+   _check_LCD
+     _command
+   _data
+   _keypad_init
+   _keypad_scan
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      7       8       1       57.1%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+ABS                  0      0       8       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK3            60      0       0       8        0.0%
+BANK3               60      0       0       9        0.0%
+BITBANK2            60      0       0      10        0.0%
+BANK2               60      0       0      11        0.0%
+DATA                 0      0       8      12        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.36 build 20220127204148 
+Symbol Table                                                                                   Fri Jan 13 14:58:32 2023
+
+                     l42 0605                       l51 0650                       l45 06DA  
+                     l61 070F                       l54 06FA                       l63 0709  
+                     l80 0750                       l72 0741                       l56 06F4  
+                     l74 073B                       l91 0782                       l59 07FA  
+                     l69 071E                       l86 0765                       l78 0756  
+                     l95 079D                       l97 0797                       l89 0788  
+                     u10 06E9                       u11 06E8                       u20 06F8  
+                     u21 06F7                       u30 06FE                       u31 06FD  
+                     u40 070D                       u41 070C                       u50 0713  
+                     u51 0712                       u60 0722                       u61 0721  
+                     u70 0730                       u71 072F                       u80 073F  
+                     u81 073E                       u90 0745                       u91 0744  
+                    l103 07AC                      l120 07F3                      l112 07E4  
+                    l114 07DE                      l106 07CF                      l108 07C9  
+                    l125 0617                      l128 062B                      l720 0607  
+                    l800 0769                      l722 060A                      l730 05FE  
+                    l810 0786                      l724 060C                      l740 068F  
+                    l732 0602                      l820 07A1                      l804 076B  
+                    l726 060F                      l750 06B3                      l742 0695  
+                    l734 0678                      l830 07BE                      l822 07B0  
+                    l814 078C                      l806 0773                      l752 06BC  
+                    l744 069E                      l736 0680                      l728 05FA  
+                    l832 07CD                      l816 079B                      l808 0777  
+                    l760 06DB                      l754 06C2                      l746 06A4  
+                    l738 0686                      l842 07E8                      l826 07B2  
+                    l770 06FE                      l762 06E5                      l756 06CB  
+                    l748 06AD                      l860 064F                      l852 062C  
+                    l844 07F7                      l836 07D3                      l828 07BA  
+                    l772 070D                      l764 06E9                      l758 06D1  
+                    l854 0636                      l862 0619                      l838 07E2  
+                    l782 0724                      l766 06F8                      l870 0663  
+                    l856 063D                      l848 07F9                      l792 0745  
+                    l784 072C                      l776 0713                      l872 0669  
+                    l864 0651                      l858 0643                      l794 0754  
+                    l786 0730                      l778 0722                      l866 065B  
+                    l788 073F                      l868 065B                      l798 075A  
+                    u100 0754                      u101 0753                      u110 075A  
+                    u111 0759                      u200 07CD                      u120 0769  
+                    u201 07CC                      u121 0768                      u210 07D3  
+                    u130 0777                      u211 07D2                      u131 0776  
+                    u220 07E2                      u140 0786                      u221 07E1  
+                    u141 0785                      u230 07E8                      u150 078C  
+                    u231 07E7                      u151 078B                      u240 07F7  
+                    u160 079B                      u241 07F6                      u161 079A  
+                    u250 0636                      u170 07A1                      u251 0635  
+                    u171 07A0                      u307 0717                      u260 0643  
+                    u180 07B0                      u261 0642                      u181 07AF  
+                    u317 0734                      u190 07BE                      u270 0669  
+                    u407 0627                      u191 07BD                      u327 0749  
+                    u271 0668                      u417 068A                      u337 075E  
+                    u427 0699                      u347 077B                      u437 06A8  
+                    u357 0790                      u447 06B7                      u367 07A5  
+                    u287 06ED                      u457 06C6                      u377 07C2  
+                    u297 0702                      u467 06D5                      u387 07D7  
+                    u477 0613                      u397 07EC                      _cnt 0077  
+                   _data 0618                     _main 0651                     btemp 007E  
+            main@pressed 0076                     start 0000         __end_of_LCD_init 06DB  
+                  ?_data 0070                    ?_main 0070                    _PORTB 0006  
+                  _PORTC 0007                    _PORTD 0008                    _TRISB 0086  
+                  _TRISC 0087                    _TRISD 0088          __end_of_command 0618  
+                  data@n 0072             ?_keypad_init 0070             ?_keypad_scan 0070  
+                  status 0003                    wtemp0 007E          __initialization 07FB  
+           __end_of_data 062C             __end_of_main 0678                   ??_data 0070  
+                 ??_main 0075                ??_command 0070  __end_of__initialization 07FC  
+              ?_LCD_init 0070           __pcstackCOMMON 0070               ??_LCD_init 0073  
+             __pmaintext 0651        __end_of_check_LCD 0651                  __ptext1 06DB  
+                __ptext2 05FA                  __ptext3 0618                  __ptext4 062C  
+                __ptext5 0678                  __ptext6 0606                  _command 0606  
+   end_of_initialization 07FC      start_initialization 07FB              __pbssCOMMON 0077  
+              ___latbits 0002            ??_keypad_init 0070            ??_keypad_scan 0070  
+              _check_LCD 062C                 ?_command 0070               ?_check_LCD 0070  
+    __end_of_keypad_init 0606      __end_of_keypad_scan 07FB                 _LCD_init 0678  
+            _keypad_init 05FA              _keypad_scan 06DB              ??_check_LCD 0073  
+               command@m 0072               _OPTION_REG 0081  
